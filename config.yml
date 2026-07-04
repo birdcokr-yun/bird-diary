@@ -1,0 +1,23 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "images/uploads"
+public_folder: "/images/uploads"
+
+collections:
+  - name: "posts"
+    label: "글"
+    label_singular: "글"
+    files:
+      - name: "posts"
+        label: "글 목록"
+        file: "content/posts.json"
+        fields:
+          - { label: "글", name: "posts", widget: "list", summary: "{{fields.date}} — {{fields.title}}",
+              fields:
+                - { label: "제목", name: "title", widget: "string" }
+                - { label: "날짜", name: "date", widget: "datetime", format: "YYYY-MM-DD", date_format: "YYYY-MM-DD", time_format: false }
+                - { label: "미리보기 문장", name: "excerpt", widget: "text" }
+                - { label: "사진 라벨(선택)", name: "thumb_label", widget: "string", required: false }
+            }
