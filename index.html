@@ -43,7 +43,7 @@
   }
   a{color:inherit;text-decoration:none;}
   .wrap{max-width:1040px;margin:0 auto;padding:0 28px;}
-
+ 
   /* ---- NAV ---- */
   .nav{
     display:flex; justify-content:space-between; align-items:center;
@@ -51,7 +51,21 @@
     font-size:13px; letter-spacing:.1em; text-transform:uppercase;
     color:var(--gold); font-weight:600;
   }
-
+ 
+  .site-title{
+    font-family:var(--serif);
+    font-weight:900;
+    color:var(--navy);
+    font-size:clamp(24px, 5.5vw, 36px);
+    line-height:1.35;
+    margin:20px 0 0;
+  }
+  .site-title .tentative{
+    font-size:0.5em;
+    font-weight:500;
+    color:var(--lavender);
+  }
+ 
   /* ---- AUTHOR HEADER ---- */
   .author{
     display:flex; align-items:center; gap:22px;
@@ -71,7 +85,7 @@
   }
   .author-info p{margin:0; font-size:14px; color:var(--ink); opacity:.75;}
   .author-info .role{font-weight:600; color:var(--gold); font-size:13px; letter-spacing:.03em; margin-top:2px;}
-
+ 
   /* ---- FEATURED (large card) ---- */
   .featured{
     display:grid;
@@ -98,7 +112,7 @@
   }
   .featured-text p{font-size:15px; color:var(--ink); opacity:.85; margin:0 0 14px;}
   .featured-text .date{font-size:13px; color:var(--gold); font-weight:600;}
-
+ 
   /* ---- MAGAZINE GRID ---- */
   .section-head{
     display:flex; align-items:baseline; gap:12px;
@@ -109,7 +123,7 @@
     color:var(--gold); background:var(--pink-soft); padding:3px 10px; border-radius:2px;
   }
   .section-head h2{font-family:var(--serif); font-weight:900; font-size:22px; color:var(--navy); margin:0;}
-
+ 
   .grid{
     display:grid;
     grid-template-columns: repeat(6, 1fr);
@@ -140,12 +154,12 @@
   .card p{margin:0 0 10px; font-size:13.5px; color:var(--ink); opacity:.8;
     display:-webkit-box; -webkit-line-clamp:1; -webkit-box-orient:vertical; overflow:hidden;}
   .card .date{font-size:12px; font-weight:600; color:var(--gold);}
-
+ 
   /* grid item sizing — asymmetric magazine feel */
   .card.span-3{grid-column:span 3;}
   .card.span-2{grid-column:span 2;}
   .card.span-4{grid-column:span 4;}
-
+ 
   /* ---- PHOTO STRIP ---- */
   .photo-strip{
     display:grid; grid-template-columns:repeat(6,1fr); gap:10px;
@@ -163,7 +177,7 @@
   @media (min-width:720px){
     .photo-strip .slot{grid-column:span 1;}
   }
-
+ 
   .guestbook{display:flex; flex-direction:column; gap:24px;}
   .gb-entries{display:flex; flex-direction:column; gap:14px;}
   .gb-card{
@@ -186,12 +200,14 @@
   }
   .gb-note{font-size:12px; color:var(--ink); opacity:.6;}
   .gb-note a{color:var(--gold); text-decoration:underline;}
-
+ 
   footer{padding:70px 0 50px; border-top:1px solid var(--line); margin-top:40px;}
   footer .closing{font-family:var(--serif); font-weight:700; font-size:17px; color:var(--navy); margin:0 0 10px;}
   footer .meta{font-size:12px; color:var(--ink); opacity:.5;}
-
+ 
   @media (max-width:820px){
+    .site-title{margin-top:14px;}
+    .author{padding:20px 0 28px;}
     .featured{grid-template-columns:1fr;}
     .grid{grid-template-columns:repeat(2,1fr);}
     .card.span-3,.card.span-2,.card.span-4{grid-column:span 1;}
@@ -202,12 +218,14 @@
 </head>
 <body>
 <div class="wrap">
-
+ 
   <div class="nav">
     <span>새윤의 기록</span>
     <a href="/admin/" id="write-btn" style="color:var(--navy); font-weight:700; border-bottom:1.5px solid var(--navy); padding-bottom:1px;">글쓰기 ✎</a>
   </div>
-
+ 
+  <h1 class="site-title">하기싫은 일과 하고싶은 일의<br>갈등사이에서 <span class="tentative">(가제)</span></h1>
+ 
   <div class="author">
     <div class="avatar">새</div>
     <div class="author-info">
@@ -216,18 +234,18 @@
       <p>하기싫은 일과 하고싶은 일의 갈등사이에서 (가제)</p>
     </div>
   </div>
-
+ 
   <section class="featured" id="featured-slot">
     <div class="featured-thumb">불러오는 중…</div>
     <div class="featured-text"></div>
   </section>
-
+ 
   <div class="section-head">
     <span class="tag">Writing</span>
     <h2>글</h2>
   </div>
   <div class="grid" id="post-grid"></div>
-
+ 
   <div class="section-head">
     <span class="tag">Photo</span>
     <h2>사진</h2>
@@ -240,7 +258,7 @@
     <div class="slot">사진</div>
     <div class="slot">사진</div>
   </div>
-
+ 
   <div class="section-head">
     <span class="tag">Guestbook</span>
     <h2>방문자 게시판</h2>
@@ -263,41 +281,47 @@
     </form>
     <p class="gb-note">※ 메시지 실제 수신을 위해서는 <a href="https://formspree.io" target="_blank">formspree.io</a>에서 무료로 폼을 발급받아 위 코드의 <code>YOUR_FORM_ID</code>를 교체해야 합니다.</p>
   </div>
-
+ 
   <footer>
     <p class="closing">완벽하지 않아도 괜찮다. 오늘의 나를 남기는 것으로 충분하다.</p>
     <p class="meta">© 2026 하기싫은 일과 하고싶은 일의 갈등사이에서</p>
   </footer>
-
+ 
 </div>
-
+ 
 <script>
   document.getElementById('write-btn').addEventListener('click', function(){});
-
+ 
   const THUMB_COLORS = ['lavender','pink','gold'];
   const SPANS = ['span-3','span-3','span-2','span-2','span-2'];
-
-  fetch('/content/posts.json')
+ 
+  fetch('/content/posts.json?t=' + Date.now(), { cache: 'no-store' })
     .then(r => r.json())
     .then(data => {
       const posts = (data.posts || []).slice().sort((a,b) => new Date(b.date) - new Date(a.date));
       if (posts.length === 0) return;
-
+ 
       const featured = posts[0];
       const rest = posts.slice(1);
-
-      document.querySelector('#featured-slot .featured-thumb').textContent = featured.thumb_label || '사진을 넣어주세요';
+ 
+      document.querySelector('#featured-slot .featured-thumb').innerHTML = featured.image
+        ? `<img src="${featured.image}" alt="${featured.title}" style="width:100%;height:100%;object-fit:cover;border-radius:6px;">`
+        : (featured.thumb_label || '사진을 넣어주세요');
       document.querySelector('#featured-slot .featured-text').innerHTML = `
         <span class="tag">Featured</span>
         <h2>${featured.title}</h2>
         <p>${featured.excerpt}</p>
         <span class="date">${featured.date}</span>
       `;
-
+ 
       const grid = document.getElementById('post-grid');
       grid.innerHTML = rest.map((p, i) => `
         <article class="card ${SPANS[i % SPANS.length]}">
-          <div class="thumb ${THUMB_COLORS[i % THUMB_COLORS.length]}">${p.thumb_label || (i+1)}</div>
+          <div class="thumb ${p.image ? '' : THUMB_COLORS[i % THUMB_COLORS.length]}" style="${p.image ? 'padding:0;' : ''}">
+            ${p.image
+              ? `<img src="${p.image}" alt="${p.title}" style="width:100%;height:100%;object-fit:cover;">`
+              : (p.thumb_label || (i+1))}
+          </div>
           <div class="body">
             <h3>${p.title}</h3>
             <p>${p.excerpt}</p>
